@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HubMark — A Plataforma de Marketing Definitiva para Clínicas</title>
+  <meta name="description" content="Automatize seu marketing médico com Inteligência Artificial. Criação de conteúdo, gestão de anúncios e triagem de pacientes em um só lugar." />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            primary: '#0f172a', /* Azul Clínico Profundo */
+            accent: '#c9634e',  /* Terracota para Conversão */
+            'accent-hover': '#b05441',
+            surface: '#f8fafc', /* Cinza Fundo */
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    .gradient-text {
+      background: linear-gradient(to right, #c9634e, #e28875);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* FAQ Accordion Transition */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out;
+    }
+    .faq-answer.open {
+      max-height: 500px;
+    }
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+    .faq-icon.open {
+      transform: rotate(180deg);
+    }
+
+    /* Mobile Menu Transition */
+    #mobile-menu {
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      transform: translateY(-10px);
+      opacity: 0;
+      pointer-events: none;
+    }
+    #mobile-menu.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body class="font-sans text-slate-800 bg-white antialiased">
+
+  <nav class="fixed w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+          <div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-white font-bold text-xl">
+            <i class="fa-solid fa-hubspot"></i>
+          </div>
+          <span class="font-bold text-2xl text-primary tracking-tight">HubMark</span>
+        </div>
+        
+        <div class="hidden md:flex space-x-8">
+          <a href="#solucao" class="text-slate-600 hover:text-accent font-medium transition">A Solução</a>
+          <a href="#funcionalidades" class="text-slate-600 hover:text-accent font-medium transition">Funcionalidades</a>
+          <a href="#planos" class="text-slate-600 hover:text-accent font-medium transition">Planos</a>
+          <a href="#faq" class="text-slate-600 hover:text-accent font-medium transition">FAQ</a>
+        </div>
+        
+        <div class="hidden md:flex items-center gap-4">
+          <a href="#" class="font-medium text-slate-600 hover:text-primary">Entrar</a>
+          <a href="#planos" class="bg-accent hover:bg-accent-hover text-white px-5 py-2.5 rounded-lg font-semibold transition shadow-lg shadow-accent/30">
+            Começar Grátis
+          </a>
+        </div>
+
+        <div class="md:hidden flex items-center">
+          <button id="mobile-menu-btn" class="text-slate-600 hover:text-primary focus:outline-none text-2xl">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="absolute top-20 left-0 w-full bg-white border-b border-slate-100 shadow-lg md:hidden">
+      <div class="flex flex-col px-4 pt-2 pb-6 space-y-4">
+        <a href="#solucao" class="text-slate-600 font-medium mobile-link">A Solução</a>
+        <a href="#funcionalidades" class="text-slate-600 font-medium mobile-link">Funcionalidades</a>
+        <a href="#planos" class="text-slate-600 font-medium mobile-link">Planos</a>
+        <a href="#faq" class="text-slate-600 font-medium mobile-link">FAQ</a>
+        <div class="h-px bg-slate-100 w-full my-2"></div>
+        <a href="#" class="text-center font-medium text-slate-600 mobile-link">Entrar</a>
+        <a href="#planos" class="text-center bg-accent text-white px-5 py-3 rounded-lg font-semibold mobile-link">Começar Grátis</a>
+      </div>
+    </div>
+  </nav>
+
+  <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent font-semibold text-sm mb-6">
+          <i class="fa-solid fa-bolt"></i> A IA trabalhando 24h pela sua clínica
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-primary leading-tight tracking-tight mb-6">
+          Sua clínica está perdendo pacientes hoje por falta de <span class="gradient-text">presença digital.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+          O algoritmo mudou. Se você não publica, não anuncia e não responde rápido, seu paciente vai para a concorrência. Centralize criação de conteúdo, tráfego e triagem de pacientes em uma única plataforma operada por Inteligência Artificial.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <a href="#planos" class="bg-accent hover:bg-accent-hover text-white text-lg px-8 py-4 rounded-xl font-bold transition shadow-xl shadow-accent/25 flex items-center justify-center gap-2">
+            Ver Planos e Assinar <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a href="#funcionalidades" class="bg-white text-primary border border-slate-200 hover:border-slate-300 text-lg px-8 py-4 rounded-xl font-bold transition flex items-center justify-center gap-2">
+            Entender como funciona
+          </a>
+        </div>
+        <p class="mt-4 text-sm text-slate-500 font-medium"><i class="fa-solid fa-shield-check text-green-600"></i> Cobrança segura via Asaas. Cancele quando quiser.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="solucao" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 transition hover:shadow-lg">
+          <div class="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-clock"></i></div>
+          <h3 class="text-xl font-bold text-primary mb-3">Falta de Tempo</h3>
+          <p class="text-slate-600">Produzir conteúdo diário e gerenciar anúncios exige um tempo que você, no consultório, simplesmente não tem.</p>
+        </div>
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 transition hover:shadow-lg">
+          <div class="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-money-bill-wave"></i></div>
+          <h3 class="text-xl font-bold text-primary mb-3">Agências Caras</h3>
+          <p class="text-slate-600">Pagar milhares de reais para agências que não entendem de ética médica e geram posts genéricos que não convertem.</p>
+        </div>
+        <div class="p-8 rounded-2xl bg-slate-50 border border-slate-100 transition hover:shadow-lg">
+          <div class="w-12 h-12 bg-red-100 text-red-600 rounded-xl flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-user-injured"></i></div>
+          <h3 class="text-xl font-bold text-primary mb-3">Leads Perdidos</h3>
+          <p class="text-slate-600">Pacientes chegam no WhatsApp, mas demoram a ser atendidos pela recepção e acabam agendando em outro local.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="funcionalidades" class="py-20 bg-primary text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">A primeira plataforma MarTech focada em Clínicas</h2>
+        <p class="text-slate-300 text-lg">Tudo o que sua clínica precisa para dominar a região, unificado em um só lugar.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center text-2xl text-accent"><i class="fa-solid fa-pen-nib"></i></div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Estúdio IA: Imagens, Carrosséis e Vídeos</h3>
+            <p class="text-slate-300">Gere postagens estáticas, carrosséis educativos e roteiros magnéticos para Reels em segundos. Tudo focado na sua especialidade.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center text-2xl text-accent"><i class="fa-solid fa-robot"></i></div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Agente de Triagem via WhatsApp</h3>
+            <p class="text-slate-300">Sua secretária virtual. A IA atende o paciente vindo do anúncio, qualifica as dúvidas e só passa para a recepção na hora de fechar a agenda.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center text-2xl text-accent"><i class="fa-solid fa-chart-line"></i></div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Dashboard de Anúncios Unificado</h3>
+            <p class="text-slate-300">Monitore Meta Ads e Google Ads na mesma tela. Saiba exatamente quanto custa cada paciente que entra na sua clínica sem abrir o gerenciador complexo.</p>
+          </div>
+        </div>
+        <div class="flex gap-6">
+          <div class="flex-shrink-0 w-14 h-14 bg-white/10 rounded-xl flex items-center justify-center text-2xl text-accent"><i class="fa-solid fa-star"></i></div>
+          <div>
+            <h3 class="text-xl font-bold mb-2">Reputação e SEO Local (GMN)</h3>
+            <p class="text-slate-300">Aumente sua relevância local. A IA monitora e sugere respostas automáticas e profissionais para suas avaliações no Google Meu Negócio.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-16 pt-8 border-t border-white/10 text-center">
+        <p class="text-slate-400 text-sm">
+          <i class="fa-solid fa-plus-circle text-accent mr-2"></i> Você também vende infoprodutos? A HubMark possui <strong>integração nativa com a Hotmart</strong> para gerir seus cursos e alunos na mesma interface (Disponível no Plano Domínio).
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="planos" class="py-24 bg-surface">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-primary mb-4">Escolha a capacidade da sua IA</h2>
+        <p class="text-slate-600 text-lg">Pague apenas pelo volume de inteligência artificial que sua clínica consome.</p>
+        <div class="mt-6 inline-flex items-center gap-2 bg-blue-50 text-blue-700 border border-blue-100 px-4 py-2 rounded-full text-sm font-semibold">
+          <i class="fa-solid fa-pix text-blue-500"></i> Aceitamos PIX e Cartão de Crédito via Asaas
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-4 gap-6 items-start">
+        
+        <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <h3 class="text-xl font-bold text-primary">Starter</h3>
+          <p class="text-sm text-slate-500 mt-2 h-10">Para testar a inteligência</p>
+          <div class="my-6">
+            <span class="text-4xl font-extrabold text-primary">Grátis</span>
+          </div>
+          <ul class="space-y-4 mb-8 text-sm text-slate-600">
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> <strong>15 Conteúdos/mês</strong></li>
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Textos e Imagens estáticas</li>
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Calendário de Postagens</li>
+            <li class="opacity-40"><i class="fa-solid fa-xmark mr-2"></i> Sem Carrosséis/Vídeos</li>
+            <li class="opacity-40"><i class="fa-solid fa-xmark mr-2"></i> Sem Agente WhatsApp</li>
+          </ul>
+          <button class="w-full py-3 rounded-lg border-2 border-slate-200 text-primary font-bold hover:border-primary transition">
+            Criar Conta Free
+          </button>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <h3 class="text-xl font-bold text-primary">Essencial</h3>
+          <p class="text-sm text-slate-500 mt-2 h-10">Presença digital diária</p>
+          <div class="my-6">
+            <span class="text-4xl font-extrabold text-primary">R$147</span><span class="text-slate-500">/mês</span>
+          </div>
+          <ul class="space-y-4 mb-8 text-sm text-slate-600">
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> <strong>30 Conteúdos/mês</strong></li>
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Textos e Imagens estáticas</li>
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Dashboard de Ads Integrado</li>
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Benchmark da Concorrência</li>
+            <li class="opacity-40"><i class="fa-solid fa-xmark mr-2"></i> Sem Carrosséis/Vídeos</li>
+          </ul>
+          <button class="w-full py-3 rounded-lg border-2 border-accent text-accent font-bold hover:bg-accent/5 transition">
+            Assinar Plano
+          </button>
+        </div>
+
+        <div class="bg-primary rounded-2xl p-8 border-2 border-accent shadow-xl relative transform lg:-translate-y-4">
+          <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+            Recomendado
+          </div>
+          <h3 class="text-xl font-bold text-white">Engajamento</h3>
+          <p class="text-sm text-slate-300 mt-2 h-10">Para clínicas em crescimento</p>
+          <div class="my-6">
+            <span class="text-4xl font-extrabold text-white">R$297</span><span class="text-slate-400">/mês</span>
+          </div>
+          <ul class="space-y-4 mb-8 text-sm text-slate-300">
+            <li><i class="fa-solid fa-check text-accent mr-2"></i> <strong>60 Conteúdos/mês</strong></li>
+            <li><i class="fa-solid fa-check text-accent mr-2"></i> <strong>Carrosséis gerados por IA</strong></li>
+            <li><i class="fa-solid fa-check text-accent mr-2"></i> Gestor Google Meu Negócio</li>
+            <li><i class="fa-solid fa-check text-accent mr-2"></i> Análise de Sentimento (Reviews)</li>
+            <li><i class="fa-solid fa-check text-accent mr-2"></i> Tudo do plano Essencial</li>
+          </ul>
+          <button class="w-full py-3 rounded-lg bg-accent hover:bg-accent-hover text-white font-bold transition shadow-lg">
+            Assinar Plano
+          </button>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition">
+          <h3 class="text-xl font-bold text-primary">Domínio Total</h3>
+          <p class="text-sm text-slate-500 mt-2 h-10">A central de controle completa</p>
+          <div class="my-6">
+            <span class="text-4xl font-extrabold text-primary">R$497</span><span class="text-slate-500">/mês</span>
+          </div>
+          <ul class="space-y-4 mb-8 text-sm text-slate-600">
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> <strong>120 Conteúdos/mês</strong></li>
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> <strong>Roteiros para Reels/Vídeos</strong></li>
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> <strong>Agente IA WhatsApp (Triagem)</strong></li>
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Integração Hotmart Liberada</li>
+            <li><i class="fa-solid fa-check text-green-500 mr-2"></i> Suporte Prioritário</li>
+          </ul>
+          <button class="w-full py-3 rounded-lg border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition">
+            Assinar Plano
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="py-20 bg-white">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-primary mb-4">Perguntas Frequentes</h2>
+        <p class="text-slate-600">Tudo o que você precisa saber antes de assinar.</p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition focus:outline-none">
+            <span class="font-bold text-primary">A plataforma serve para a minha especialidade?</span>
+            <i class="fa-solid fa-chevron-down text-slate-400 faq-icon"></i>
+          </button>
+          <div class="faq-answer px-6 bg-white">
+            <p class="py-4 text-slate-600">Sim. A inteligência artificial do HubMark é programada com o contexto do seu negócio. Ao criar sua conta, você define sua especialidade, tom de voz e restrições éticas do seu conselho (CRM, CRO, etc.), garantindo conteúdo profissional e seguro.</p>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition focus:outline-none">
+            <span class="font-bold text-primary">Como funciona o pagamento via Asaas? É seguro?</span>
+            <i class="fa-solid fa-chevron-down text-slate-400 faq-icon"></i>
+          </button>
+          <div class="faq-answer px-6 bg-white">
+            <p class="py-4 text-slate-600">O Asaas é uma das maiores e mais seguras instituições de pagamento homologadas pelo Banco Central do Brasil. Você pode optar por pagar via Cartão de Crédito ou configurar um PIX Automático/Recorrente. Não há taxas de cancelamento ou fidelidade.</p>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition focus:outline-none">
+            <span class="font-bold text-primary">Preciso de conhecimentos de programação ou design?</span>
+            <i class="fa-solid fa-chevron-down text-slate-400 faq-icon"></i>
+          </button>
+          <div class="faq-answer px-6 bg-white">
+            <p class="py-4 text-slate-600">Não! O HubMark foi desenhado especificamente para profissionais de saúde e suas secretárias/recepcionistas. A interface é tão simples quanto usar um aplicativo de celular. A Inteligência Artificial faz todo o "trabalho duro" de design e copywriting por você.</p>
+          </div>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl overflow-hidden">
+          <button class="faq-toggle w-full px-6 py-4 text-left flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition focus:outline-none">
+            <span class="font-bold text-primary">Posso mudar de plano depois?</span>
+            <i class="fa-solid fa-chevron-down text-slate-400 faq-icon"></i>
+          </button>
+          <div class="faq-answer px-6 bg-white">
+            <p class="py-4 text-slate-600">Com certeza. Você pode começar no plano Grátis ou Essencial para testar e, assim que a demanda da sua clínica aumentar, fazer o upgrade para os planos Engajamento ou Domínio Total diretamente pelo painel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-accent relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'0.1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">Pronto para modernizar sua clínica?</h2>
+      <p class="text-white/90 text-lg mb-10">Junte-se a outros profissionais de saúde que estão automatizando a captação de pacientes e focando no que realmente importa: o atendimento médico.</p>
+      <a href="#planos" class="inline-block bg-white text-accent px-10 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition shadow-2xl">
+        Criar Minha Conta Grátis
+      </a>
+    </div>
+  </section>
+
+  <footer class="bg-primary pt-16 pb-8 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div class="col-span-1 md:col-span-2">
+          <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-white text-lg"><i class="fa-solid fa-hubspot"></i></div>
+            <span class="font-bold text-2xl text-white">HubMark</span>
+          </div>
+          <p class="text-slate-400 max-w-sm mb-6">A plataforma de inteligência artificial definitiva para automação de marketing em clínicas médicas e odontológicas.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-slate-400 hover:text-white transition"><i class="fa-brands fa-instagram text-xl"></i></a>
+            <a href="#" class="text-slate-400 hover:text-white transition"><i class="fa-brands fa-linkedin text-xl"></i></a>
+          </div>
+        </div>
+        
+        <div>
+          <h4 class="font-bold text-white mb-4">Produto</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><a href="#funcionalidades" class="hover:text-accent transition">Funcionalidades</a></li>
+            <li><a href="#planos" class="hover:text-accent transition">Preços</a></li>
+            <li><a href="#" class="hover:text-accent transition">Integrações</a></li>
+            <li><a href="#" class="hover:text-accent transition">Atualizações</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-white mb-4">Legal</h4>
+          <ul class="space-y-2 text-slate-400">
+            <li><a href="#" class="hover:text-white transition">Termos de Uso</a></li>
+            <li><a href="#" class="hover:text-white transition">Política de Privacidade</a></li>
+            <li><a href="#" class="hover:text-white transition">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-sm text-slate-500">© 2026 HubMark. Todos os direitos reservados.</p>
+        <p class="text-sm text-slate-500 flex items-center gap-2">
+          Feito com <i class="fa-solid fa-heart text-accent"></i> para a área da saúde
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // 1. Lógica do FAQ (Accordion)
+    document.querySelectorAll('.faq-toggle').forEach(button => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('.faq-icon');
+        const isOpen = answer.classList.contains('open');
+        
+        // Fecha todos os outros abertos
+        document.querySelectorAll('.faq-answer').forEach(ans => ans.classList.remove('open'));
+        document.querySelectorAll('.faq-icon').forEach(ic => ic.classList.remove('open'));
+        
+        // Se o clicado não estava aberto, abre ele
+        if (!isOpen) {
+          answer.classList.add('open');
+          icon.classList.add('open');
+        }
+      });
+    });
+
+    // 2. Lógica do Menu Mobile (Hambúrguer)
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+    const iconMenu = mobileBtn.querySelector('i');
+
+    function toggleMenu() {
+      mobileMenu.classList.toggle('open');
+      if (mobileMenu.classList.contains('open')) {
+        iconMenu.classList.remove('fa-bars');
+        iconMenu.classList.add('fa-xmark');
+      } else {
+        iconMenu.classList.remove('fa-xmark');
+        iconMenu.classList.add('fa-bars');
+      }
+    }
+
+    mobileBtn.addEventListener('click', toggleMenu);
+
+    // Fechar menu mobile ao clicar em um link
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('open')) {
+          toggleMenu();
+        }
+      });
+    });
+
+    // 3. Efeito de Sombra no Navbar ao fazer scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navbar.classList.add('shadow-md');
+      } else {
+        navbar.classList.remove('shadow-md');
+      }
+    });
+  </script>
+
+</body>
+</html>
